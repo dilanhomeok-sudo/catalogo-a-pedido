@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muebles Dimadera · Dilan Home</title>
+<meta name="description" content="Muebles de madera Dimadera fabricados a pedido: juegos de comedor, sillas, mesas y complementos en pino y paraíso. Armá tu pedido online.">
+<link rel="icon" href="logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./"><img src="logo.webp" alt="Dilan Home"><span><b>Muebles Dimadera</b><small>Fabricados a pedido</small></span></a>
+    <button class="cart-btn" id="openCart" aria-label="Ver mi pedido">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+      <span>Mi pedido</span><i id="cartCount">0</i>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Muebles de madera fabricados para vos</h1>
+  <p>Elegí la madera, el lustre y las medidas. Armá tu pedido y lo enviamos por WhatsApp para confirmarlo.</p>
+</section>
+
+<main>
+  <div class="bar">
+    <div class="seg" id="woods" role="tablist" aria-label="Madera"></div>
+    <input id="q" type="search" placeholder="Buscar (ej: silla, Kuno, mesa redonda)" aria-label="Buscar">
+  </div>
+  <nav class="chips" id="cats" aria-label="Categorías"></nav>
+  <nav class="chips sub" id="subs" aria-label="Subcategorías"></nav>
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No encontramos productos con ese filtro.</p>
+</main>
+
+<footer>
+  <p>Todos los muebles se fabrican a pedido. Los precios incluyen IVA y flete a depósito; el envío al domicilio se coordina aparte. Plazo de entrega y disponibilidad de lustres se confirman al tomar el pedido. Imágenes ilustrativas.</p>
+</footer>
+
+<!-- Detalle de producto -->
+<div class="overlay" id="modalWrap" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
+    <button class="x" id="mClose" aria-label="Cerrar">&times;</button>
+    <div class="m-img" id="mImg"></div>
+    <div class="m-body">
+      <span class="tag" id="mTag"></span>
+      <h2 id="mName"></h2>
+      <p class="m-desc" id="mDesc"></p>
+      <label class="fld" id="fVar"><span>Medida / versión</span><select id="mVar"></select></label>
+      <div class="fld"><span>Lustre</span><div class="lustres" id="mLus"></div><small id="mLusNote"></small></div>
+      <label class="fld" id="fTap"><span>Tapizado</span><select id="mTapSel"><option>Tela</option><option>Cuerina</option></select></label>
+      <label class="fld"><span>Cantidad</span>
+        <div class="qty"><button type="button" id="mMinus">&minus;</button><b id="mQty">1</b><button type="button" id="mPlus">+</button></div>
+      </label>
+      <div class="prices big">
+        <div><small>Precio de lista</small><b id="mLista"></b></div>
+        <div class="ef"><small>Efectivo / transferencia</small><b id="mEf"></b></div>
+      </div>
+      <button class="primary" id="mAdd">Agregar al pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- Carrito -->
+<div class="overlay side" id="cartWrap" hidden>
+  <aside class="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="cart-h"><h2 id="cartTitle">Mi pedido</h2><button class="x" id="cClose" aria-label="Cerrar">&times;</button></div>
+    <div class="cart-list" id="cList"></div>
+    <div class="cart-f" id="cFoot">
+      <div class="tot"><span>Total lista</span><b id="cLista"></b></div>
+      <div class="tot ef"><span>Total efectivo / transferencia</span><b id="cEf"></b></div>
+      <label class="fld"><span>Tu nombre</span><input id="cName" autocomplete="name" placeholder="Nombre y apellido"></label>
+      <label class="fld"><span>Notas (colores de tela, localidad, etc.)</span><textarea id="cNote" rows="2"></textarea></label>
+      <button class="primary wa" id="cSend">Enviar pedido por WhatsApp</button>
+      <button class="ghost" id="cCopy">Copiar pedido</button>
+      <button class="link" id="cClear">Vaciar pedido</button>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

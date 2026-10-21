@@ -17,7 +17,8 @@ button{cursor:pointer}
 .top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
 .top-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand img{height:34px;width:auto;background:#fff;border-radius:6px;padding:3px 6px}
+.brand img{height:44px;width:auto;background:#fff;border-radius:8px;padding:2px 6px}
+.f-logo{height:64px;width:auto;background:#fff;border-radius:10px;padding:4px 10px;margin-bottom:12px}
 .brand span{display:flex;flex-direction:column;line-height:1.1}
 .brand b{font-family:Fraunces,serif;font-size:18px}
 .brand small{color:var(--muted);font-size:12px}

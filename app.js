@@ -115,9 +115,18 @@
     $('fTap').hidden = !i.tap;
     renderTelas(); renderLustres(); updatePrice();
     $('modalWrap').hidden = false; document.body.style.overflow = 'hidden';
+    try { history.pushState({ panel: 'modal' }, ''); } catch (e) {}
     $('mClose').focus();
   }
-  function closeModal() { $('modalWrap').hidden = true; document.body.style.overflow = ''; }
+  // Cierra el panel; si el usuario toca "atrás" en el celular, también se cierra (ver popstate)
+  function hidePanel(id) { $(id).hidden = true; document.body.style.overflow = ''; }
+  function closePanel(id) {
+    if ($(id).hidden) return;
+    hidePanel(id);
+    if (history.state && history.state.panel) { try { history.back(); } catch (e) {} }
+  }
+  function closeModal() { closePanel('modalWrap'); }
+  window.addEventListener('popstate', function () { hidePanel('modalWrap'); hidePanel('cartWrap'); });
 
   // Muestra con foto (o color) + nombre, como en la web del proveedor
   function sw(parent, o, pressed, fn) {
@@ -242,8 +251,11 @@
     else toast('No se pudo copiar');
   };
   $('cClear').onclick = function () { if (confirm('¿Vaciar el pedido?')) { cart = []; saveCart(); renderCart(); } };
-  $('openCart').onclick = function () { $('cartWrap').hidden = false; document.body.style.overflow = 'hidden'; };
-  function closeCart() { $('cartWrap').hidden = true; document.body.style.overflow = ''; }
+  $('openCart').onclick = function () {
+    $('cartWrap').hidden = false; document.body.style.overflow = 'hidden';
+    try { history.pushState({ panel: 'cart' }, ''); } catch (e) {}
+  };
+  function closeCart() { closePanel('cartWrap'); }
   $('cClose').onclick = closeCart;
   $('cartWrap').addEventListener('click', function (e) { if (e.target === this) closeCart(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); closeCart(); } });

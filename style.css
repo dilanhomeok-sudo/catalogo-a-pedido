@@ -119,6 +119,10 @@ select,input,textarea{border:1px solid var(--line);background:var(--card);border
   .overlay{align-items:flex-end;padding:0}
   .m-img{min-height:0;height:min(72vw,320px);overflow:hidden}
   .m-img img{height:100%;max-height:none}
+  /* La X queda fija en pantalla aunque se haga scroll en el detalle */
+  .modal .x{position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;width:44px;height:44px;box-shadow:0 2px 10px rgba(59,54,49,.3)}
+  /* "Agregar al pedido" siempre a la vista */
+  #mAdd{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom));box-shadow:0 -10px 14px 6px var(--bg),0 4px 14px rgba(59,54,49,.25)}
   .brand .line-name{display:none}
   .cart-btn span{display:none}
   .grid{grid-template-columns:repeat(2,1fr);gap:10px}

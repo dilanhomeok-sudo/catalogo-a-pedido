@@ -1,6 +1,148 @@
 // Generado por dimadera-fuente/build_data.py. Solo precios de reventa.
 window.CATALOGO = {
  "recargoLista": 1.2,
+ "telas": [
+  {
+   "n": "Gris Plomo",
+   "img": "img/telas/gris-plomo.jpg"
+  },
+  {
+   "n": "Rustico Siena",
+   "img": "img/telas/rustico-siena.jpg"
+  },
+  {
+   "n": "Cuerotex Gris",
+   "img": "img/telas/cuerotex-gris.jpg"
+  },
+  {
+   "n": "Cuerotex Beige",
+   "img": "img/telas/cuerotex-beige.jpg"
+  },
+  {
+   "n": "Gris Granito",
+   "img": "img/telas/gris-granito.jpg"
+  },
+  {
+   "n": "Rustico Pardo",
+   "img": "img/telas/rustico-pardo.jpg"
+  },
+  {
+   "n": "Torino Marfil",
+   "img": "img/telas/torino-marfil.jpg"
+  },
+  {
+   "n": "Torino Metal",
+   "img": "img/telas/torino-metal.jpg"
+  },
+  {
+   "n": "Gris Perla",
+   "img": "img/telas/gris-perla.jpg"
+  },
+  {
+   "n": "Azul Arándano",
+   "img": "img/telas/azul-arandano.jpg"
+  },
+  {
+   "n": "Verde Musgo",
+   "img": "img/telas/verde-musgo.jpg"
+  }
+ ],
+ "lustres": {
+  "Pino": [
+   {
+    "n": "Natural",
+    "img": null,
+    "c": "#d9a066",
+    "s": 0
+   },
+   {
+    "n": "Miel",
+    "img": "img/lustres/mielpi.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Cedro",
+    "img": "img/lustres/cedropi.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Nogal",
+    "img": "img/lustres/nogalpi.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Wengue",
+    "img": null,
+    "c": "#2a1a14",
+    "s": 0.1,
+    "esp": true
+   },
+   {
+    "n": "Blanco",
+    "img": null,
+    "c": "#f4f1ea",
+    "s": 0.15,
+    "esp": true
+   },
+   {
+    "n": "Negro",
+    "img": null,
+    "c": "#111111",
+    "s": 0.15,
+    "esp": true
+   }
+  ],
+  "Paraíso": [
+   {
+    "n": "Natural",
+    "img": "img/lustres/naturalpa.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Miel",
+    "img": "img/lustres/mielpa.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Cedro",
+    "img": "img/lustres/cedropa.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Nogal",
+    "img": "img/lustres/nogalpa.jpg",
+    "c": null,
+    "s": 0
+   },
+   {
+    "n": "Wengue",
+    "img": null,
+    "c": "#2a1a14",
+    "s": 0.1,
+    "esp": true
+   },
+   {
+    "n": "Blanco",
+    "img": null,
+    "c": "#f4f1ea",
+    "s": 0.15,
+    "esp": true
+   },
+   {
+    "n": "Negro",
+    "img": null,
+    "c": "#111111",
+    "s": 0.15,
+    "esp": true
+   }
+  ]
+ },
  "items": [
   {
    "id": "s412-para-so-0",
@@ -117,7 +259,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 216200
+     "p": 216200,
+     "ps": 123200
     }
    ]
   },
@@ -134,7 +277,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 193600
+     "p": 193600,
+     "ps": 176100
     }
    ]
   },
@@ -151,7 +295,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 216200
+     "p": 216200,
+     "ps": 215800
     }
    ]
   },
@@ -168,7 +313,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 216200
+     "p": 216200,
+     "ps": 170800
     }
    ]
   },
@@ -185,7 +331,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 193600
+     "p": 193600,
+     "ps": 176100
     }
    ]
   },
@@ -219,7 +366,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 193600
+     "p": 193600,
+     "ps": 176100
     }
    ]
   },
@@ -236,7 +384,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 193600
+     "p": 193600,
+     "ps": 176100
     }
    ]
   },
@@ -253,7 +402,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 281000
+     "p": 281000,
+     "ps": 157400
     }
    ]
   },
@@ -287,7 +437,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 281000
+     "p": 281000,
+     "ps": 219200
     }
    ]
   },
@@ -304,7 +455,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 281000
+     "p": 281000,
+     "ps": 219200
     }
    ]
   },
@@ -321,7 +473,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 251600
+     "p": 251600,
+     "ps": 226500
     }
    ]
   },
@@ -355,7 +508,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 238200
+     "p": 238200,
+     "ps": 216700
     }
    ]
   },
@@ -389,7 +543,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 188900
+     "p": 188900,
+     "ps": 171900
     }
    ]
   },
@@ -833,7 +988,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 126600
+     "p": 126600,
+     "ps": 115200
     }
    ]
   },
@@ -850,7 +1006,8 @@ window.CATALOGO = {
    "variants": [
     {
      "l": "Unidad",
-     "p": 167200
+     "p": 167200,
+     "ps": 132100
     }
    ]
   },

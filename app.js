@@ -3,12 +3,7 @@
   var WHATSAPP = '5493751604665'; // número con código de país, sin + ni espacios (ej: 5493764123456). Vacío = WhatsApp pide elegir contacto.
   var STORE = 'Dilan Home';
 
-  var LUSTRES = [
-    { n: 'Natural', c: '#c98a4b', s: 0 }, { n: 'Miel', c: '#b8741f', s: 0 },
-    { n: 'Cedro', c: '#6b2e1a', s: 0 }, { n: 'Nogal', c: '#3b2416', s: 0 },
-    { n: 'Wengue', c: '#2a1a14', s: 0.10 }, { n: 'Blanco', c: '#f4f1ea', s: 0.15 },
-    { n: 'Negro', c: '#111', s: 0.15 }
-  ];
+  var SIN_TELA = 'Sin tela / sin espuma';
   var CAT_ORDER = ['Juegos de comedor', 'Sillas', 'Mesas', 'Complementos'];
   var LISTA = CATALOGO.recargoLista;
   var items = CATALOGO.items;
@@ -24,8 +19,12 @@
   function saveCart() { try { localStorage.setItem('dimadera-cart', JSON.stringify(cart)); } catch (e) {} }
 
   // ---- Precios ----
-  function surcharge(name) { var l = LUSTRES.filter(function (x) { return x.n === name; })[0]; return l ? l.s : 0; }
-  function priceEf(base, lus) { return round100(base * (1 + surcharge(lus))); }
+  function surcharge(name) { var l = CATALOGO.lustres.Pino.filter(function (x) { return x.n === name; })[0]; return l ? l.s : 0; }
+  // v = variante; tap = tela elegida (SIN_TELA usa el precio sin tapizar si el modelo lo tiene)
+  function priceEf(v, lus, tap) {
+    var base = (tap === SIN_TELA && v.ps) ? v.ps : v.p;
+    return round100(base * (1 + surcharge(lus)));
+  }
   function priceLista(ef) { return Math.round(ef * LISTA); }
   function byId(id) { return items.filter(function (i) { return i.id === id; })[0]; }
 
@@ -102,10 +101,10 @@
   function render() { renderWoods(); renderChips(); renderGrid(); }
 
   // ---- Modal de producto ----
-  var cur = null, sel = { v: 0, lus: 'Natural', qty: 1, tap: 'Tela' };
+  var cur = null, sel = { v: 0, lus: 'Natural', qty: 1, tap: '' };
 
   function openModal(i) {
-    cur = i; sel = { v: 0, lus: 'Natural', qty: 1, tap: 'Tela' };
+    cur = i; sel = { v: 0, lus: 'Natural', qty: 1, tap: '' };
     $('mImg').replaceWith(Object.assign(photo(i, 'm-img'), { id: 'mImg' }));
     $('mTag').textContent = i.wood + ' · ' + i.sub;
     $('mName').textContent = i.name + ' (' + i.model + ')';
@@ -114,34 +113,55 @@
     i.variants.forEach(function (v, k) { var o = el('option', '', v.l); o.value = k; vs.appendChild(o); });
     $('fVar').hidden = i.variants.length === 1 && i.variants[0].l === 'Unidad';
     $('fTap').hidden = !i.tap;
-    $('mTapSel').value = 'Tela';
-    renderLustres(); updatePrice();
+    renderTelas(); renderLustres(); updatePrice();
     $('modalWrap').hidden = false; document.body.style.overflow = 'hidden';
     $('mClose').focus();
   }
   function closeModal() { $('modalWrap').hidden = true; document.body.style.overflow = ''; }
 
+  // Muestra con foto (o color) + nombre, como en la web del proveedor
+  function sw(parent, o, pressed, fn) {
+    var b = el('button', 'sw'); b.type = 'button'; b.setAttribute('aria-pressed', String(pressed));
+    var f = el('span', 'sw-f');
+    if (o.img) { var im = el('img'); im.src = o.img; im.alt = ''; im.loading = 'lazy'; f.appendChild(im); }
+    else f.style.background = o.c || '#eee';
+    b.appendChild(f);
+    b.appendChild(el('span', 'sw-n', o.n));
+    if (o.sub) b.appendChild(el('small', '', o.sub));
+    b.onclick = fn; parent.appendChild(b);
+  }
+
+  function renderTelas() {
+    var box = $('mTela'); box.textContent = '';
+    var v = cur.variants[sel.v];
+    if (v.ps) {
+      var off = Math.round((1 - v.ps / v.p) * 100);
+      sw(box, { n: SIN_TELA, c: '#f1e9dd', sub: off + '% menos' }, sel.tap === SIN_TELA, function () { sel.tap = SIN_TELA; renderTelas(); updatePrice(); });
+    }
+    CATALOGO.telas.forEach(function (t) {
+      sw(box, t, sel.tap === t.n, function () { sel.tap = t.n; renderTelas(); updatePrice(); });
+    });
+    $('mTelaSel').textContent = sel.tap || 'A definir';
+  }
+
   function renderLustres() {
     var box = $('mLus'); box.textContent = '';
-    LUSTRES.forEach(function (l) {
-      var b = el('button'); b.type = 'button'; b.setAttribute('aria-pressed', String(sel.lus === l.n));
-      var dot = el('i'); dot.style.background = l.c; b.appendChild(dot);
-      b.appendChild(document.createTextNode(l.n + (l.s ? ' +' + Math.round(l.s * 100) + '%' : '')));
-      b.onclick = function () { sel.lus = l.n; renderLustres(); updatePrice(); };
-      box.appendChild(b);
+    CATALOGO.lustres[cur.wood].forEach(function (l) {
+      sw(box, { n: l.n, img: l.img, c: l.c, sub: l.s ? '+' + Math.round(l.s * 100) + '%' : '' }, sel.lus === l.n,
+        function () { sel.lus = l.n; renderLustres(); updatePrice(); });
     });
-    $('mLusNote').textContent = 'Wengue, blanco y negro son lustres especiales con recargo.';
+    $('mLusSel').textContent = sel.lus;
+    $('mLusNote').textContent = 'Wengue, blanco y negro son lustres especiales con recargo sobre el precio de lista.';
   }
 
   function updatePrice() {
-    var ef = priceEf(cur.variants[sel.v].p, sel.lus);
+    var ef = priceEf(cur.variants[sel.v], sel.lus, sel.tap);
     $('mEf').textContent = money(ef * sel.qty);
     $('mLista').textContent = money(priceLista(ef) * sel.qty);
     $('mQty').textContent = sel.qty;
   }
 
-  $('mVar').onchange = function () { sel.v = +this.value; updatePrice(); };
-  $('mTapSel').onchange = function () { sel.tap = this.value; };
+  $('mVar').onchange = function () { sel.v = +this.value; renderTelas(); updatePrice(); };
   $('mMinus').onclick = function () { sel.qty = Math.max(1, sel.qty - 1); updatePrice(); };
   $('mPlus').onclick = function () { sel.qty = Math.min(99, sel.qty + 1); updatePrice(); };
   $('mClose').onclick = closeModal;
@@ -158,7 +178,7 @@
   // ---- Carrito ----
   function lineData(l) {
     var i = byId(l.id); if (!i || !i.variants[l.v]) return null;
-    var ef = priceEf(i.variants[l.v].p, l.lus);
+    var ef = priceEf(i.variants[l.v], l.lus, l.tap);
     return { i: i, v: i.variants[l.v], ef: ef, lista: priceLista(ef) };
   }
 
@@ -176,7 +196,7 @@
       row.appendChild(photo(d.i));
       var mid = el('div');
       mid.appendChild(el('h4', '', d.i.name + ' · ' + d.i.wood));
-      var det = [d.v.l === 'Unidad' ? null : d.v.l, 'Lustre ' + l.lus, l.tap ? 'Tapizado ' + l.tap.toLowerCase() : null].filter(Boolean).join(' · ');
+      var det = [d.v.l === 'Unidad' ? null : d.v.l, 'Lustre ' + l.lus, d.i.tap ? 'Tela: ' + (l.tap || 'a definir') : null].filter(Boolean).join(' · ');
       mid.appendChild(el('p', '', det));
       var q = el('div', 'qty');
       var m = el('button', '', '−'), c = el('b', '', l.qty), p = el('button', '', '+');
@@ -201,7 +221,7 @@
       var d = lineData(l); tEf += d.ef * l.qty; tLi += d.lista * l.qty;
       t += (k + 1) + '. ' + d.i.name + ' (' + d.i.model + ') · ' + d.i.wood + '\n';
       if (d.v.l !== 'Unidad') t += '   ' + d.v.l + '\n';
-      t += '   Lustre ' + l.lus + (l.tap ? ' · Tapizado ' + l.tap.toLowerCase() : '') + '\n';
+      t += '   Lustre ' + l.lus + (d.i.tap ? ' · Tela: ' + (l.tap || 'a definir') : '') + '\n';
       t += '   ' + l.qty + ' x ' + money(d.ef) + ' efectivo (' + money(d.lista) + ' lista) = ' + money(d.ef * l.qty) + '\n';
     });
     t += '\nTotal efectivo/transferencia: ' + money(tEf) + '\nTotal precio de lista: ' + money(tLi);

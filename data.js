@@ -187,7 +187,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava.",
-   "img": null,
+   "img": "img/pdf-s411e.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -221,7 +221,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava.",
-   "img": null,
+   "img": "img/pdf-s410e.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -416,7 +416,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": null,
+   "img": "img/pdf-sll105q.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1331,7 +1331,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor clásica, tapa finger, borde 18 mm.",
-   "img": null,
+   "img": "img/pdf-mcm118.jpg",
    "variants": [
     {
      "l": "70 x 80 x 120 cm",

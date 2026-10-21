@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de pedidos · Dilan Home</title>
+<link rel="icon" href="icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .adm{max-width:1180px;margin:0 auto;padding:16px 16px 60px}
+  .adm h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:38px;margin:8px 0 4px}
+  .login{max-width:360px;margin:60px auto;display:flex;flex-direction:column;gap:12px}
+  .tabs{display:flex;gap:8px;margin:12px 0}
+  .tabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-weight:500}
+  .tabs button[aria-pressed="true"]{background:var(--salvia);border-color:var(--ink)}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .stats button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 12px;text-align:left;min-width:96px}
+  .stats button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+  .stats b{display:block;font-size:22px;font-weight:500}.stats small{color:var(--muted)}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.filters select,.filters input{width:auto;min-width:160px;flex:1}
+  .ped{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:10px 0;display:grid;gap:8px}
+  .ped-h{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+  .ped-h b{font-size:17px;font-weight:500}.muted{color:var(--muted);font-size:13px}
+  .ped ul{margin:0;padding-left:18px}.ped li{margin:2px 0;font-size:14px}
+  .ped-f{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.ped-f select{width:auto}.ped-f input{flex:1;min-width:180px}
+  .pill{display:inline-block;border-radius:999px;padding:3px 10px;font-size:12px;background:var(--lino)}
+  .pill.n{background:var(--arcilla)}
+  a.wa{color:var(--wa);font-weight:500}
+  .compra{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:12px}
+  .compra pre{margin:0;white-space:pre-wrap;font:14px/1.5 Outfit,sans-serif;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .row .primary,.row .ghost{padding:10px 16px;font-size:15px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="./"><svg class="mark" viewBox="0 0 80 90" aria-hidden="true"><path d="M6 5 L6 85 L34 85 A40 40 0 0 0 34 5 Z" fill="#C5D1B8"/><circle cx="36" cy="45" r="13" fill="#E9A98B"/></svg><span class="word">dilan home</span><span class="line-name">Panel de pedidos</span></a>
+  <div class="top-r"><button class="ghost" id="salir" hidden>Salir</button></div>
+</div></header>
+
+<div class="adm">
+  <form class="login" id="login">
+    <h1>Panel de pedidos</h1>
+    <label class="fld"><span>Clave de administración</span><input id="clave" type="password" autocomplete="current-password" required></label>
+    <p class="err" id="lerr" role="alert" hidden></p>
+    <button class="primary" type="submit">Entrar</button>
+  </form>
+
+  <section id="app" hidden>
+    <div class="tabs">
+      <button id="tPed" aria-pressed="true">Pedidos</button>
+      <button id="tCompra" aria-pressed="false">Hoja de compra por fábrica</button>
+      <button id="tRef" class="ghost" style="margin-left:auto">Actualizar</button>
+    </div>
+
+    <div id="vPed">
+      <div class="stats" id="stats"></div>
+      <div class="filters">
+        <select id="fProv" aria-label="Proveedor"></select>
+        <input id="fQ" type="search" placeholder="Buscar cliente, teléfono o Nº" aria-label="Buscar">
+      </div>
+      <p class="muted" id="cnt"></p>
+      <div id="lista"></div>
+    </div>
+
+    <div id="vCompra" hidden>
+      <div class="compra">
+        <div class="row">
+          <label class="fld"><span>Proveedor</span><select id="cProv"></select></label>
+          <label class="fld"><span>Pedidos en estado</span><select id="cEst"></select></label>
+        </div>
+        <pre id="cTxt"></pre>
+        <div class="row">
+          <button class="primary" id="cCopy">Copiar hoja de compra</button>
+          <button class="ghost" id="cMark">Marcarlos como "Pedido a fábrica"</button>
+          <span class="muted" id="cInfo"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  'use strict';
+  var URL_ = window.APP_CONFIG.pedidosUrl, $ = function (id) { return document.getElementById(id); };
+  var money = function (n) { return '$' + Math.round(n).toLocaleString('es-AR'); };
+  var el = function (t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+  var key = ''; try { key = sessionStorage.getItem('adm-key') || ''; } catch (e) {}
+  var data = { estados: [], pedidos: [] }, fEst = 'Todos';
+
+  function api(body) {
+    body.clave = key;
+    return fetch(URL_, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) }).then(function (r) { return r.json(); });
+  }
+  function toast(m) { var t = $('toast'); t.textContent = m; t.hidden = false; setTimeout(function () { t.hidden = true; }, 1800); }
+
+  function cargar() {
+    if (!URL_) { $('lerr').textContent = 'Falta configurar "pedidosUrl" en config.js (ver apps-script/LEEME.md).'; $('lerr').hidden = false; return; }
+    return api({ accion: 'lista' }).then(function (j) {
+      if (!j.ok) { $('lerr').textContent = j.error === 'clave' ? 'Clave incorrecta.' : 'No se pudo cargar (' + j.error + ').'; $('lerr').hidden = false; $('login').hidden = false; $('app').hidden = true; return; }
+      data = j; $('login').hidden = true; $('app').hidden = false; $('salir').hidden = false; pintar();
+    }).catch(function () { $('lerr').textContent = 'Sin conexión con la planilla.'; $('lerr').hidden = false; });
+  }
+  $('login').onsubmit = function (e) { e.preventDefault(); key = $('clave').value; try { sessionStorage.setItem('adm-key', key); } catch (x) {} $('lerr').hidden = true; cargar(); };
+  $('salir').onclick = function () { key = ''; try { sessionStorage.removeItem('adm-key'); } catch (e) {} location.reload(); };
+  $('tRef').onclick = function () { cargar().then(function () { toast('Actualizado'); }); };
+
+  // ---- Pedidos ----
+  function pintar() {
+    var provs = []; data.pedidos.forEach(function (p) { if (provs.indexOf(p.prov) < 0) provs.push(p.prov); });
+    fillSel($('fProv'), ['Todos los proveedores'].concat(provs), $('fProv').value);
+    fillSel($('cProv'), provs, $('cProv').value);
+    fillSel($('cEst'), data.estados, $('cEst').value || 'Nuevo');
+    var st = $('stats'); st.textContent = '';
+    ['Todos'].concat(data.estados).forEach(function (s) {
+      var n = s === 'Todos' ? data.pedidos.length : data.pedidos.filter(function (p) { return p.estado === s; }).length;
+      var b = el('button'); b.type = 'button'; b.setAttribute('aria-pressed', String(fEst === s));
+      b.appendChild(el('b', '', n)); b.appendChild(el('small', '', s)); b.onclick = function () { fEst = s; pintar(); }; st.appendChild(b);
+    });
+    lista(); compra();
+  }
+  function fillSel(s, opts, keep) { s.textContent = ''; opts.forEach(function (o) { var x = el('option', '', o); x.value = o; s.appendChild(x); }); if (keep && opts.indexOf(keep) >= 0) s.value = keep; }
+  function lista() {
+    var q = $('fQ').value.trim().toLowerCase(), pv = $('fProv').selectedIndex > 0 ? $('fProv').value : '';
+    var arr = data.pedidos.filter(function (p) {
+      return (fEst === 'Todos' || p.estado === fEst) && (!pv || p.prov === pv) &&
+        (!q || (p.cliente + ' ' + p.tel + ' ' + p.id).toLowerCase().indexOf(q) >= 0);
+    });
+    $('cnt').textContent = arr.length + (arr.length === 1 ? ' pedido' : ' pedidos');
+    var box = $('lista'); box.textContent = '';
+    arr.forEach(function (p) {
+      var c = el('div', 'ped'), h = el('div', 'ped-h'), l = el('div');
+      l.appendChild(el('b', '', p.cliente)); l.appendChild(el('div', 'muted', p.id + ' · ' + p.prov + ' · ' + new Date(p.fecha).toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' })));
+      var r = el('div'); r.appendChild(el('b', '', money(p.ef))); r.appendChild(el('div', 'muted', 'lista ' + money(p.lista)));
+      h.appendChild(l); h.appendChild(r); c.appendChild(h);
+      var tel = String(p.tel).replace(/\D/g, ''), wa = el('a', 'wa', 'WhatsApp ' + p.tel);
+      wa.href = 'https://wa.me/' + (tel.length <= 10 ? '549' + tel.replace(/^0/, '') : tel); wa.target = '_blank'; wa.rel = 'noopener'; c.appendChild(wa);
+      var ul = el('ul'); p.lineas.forEach(function (x) {
+        ul.appendChild(el('li', '', x.cant + ' x ' + x.nombre + ' (' + x.modelo + ')' + (x.madera ? ' · ' + x.madera : '') + (x.medida ? ' · ' + x.medida : '') + ' · Lustre ' + x.lustre + (x.tela ? ' · Tela ' + x.tela : '')));
+      }); c.appendChild(ul);
+      if (p.notas) c.appendChild(el('div', 'muted', 'Notas del cliente: ' + p.notas));
+      var f = el('div', 'ped-f'), s = el('select'); s.setAttribute('aria-label', 'Estado');
+      data.estados.forEach(function (e) { var o = el('option', '', e); o.value = e; s.appendChild(o); }); s.value = p.estado;
+      s.onchange = function () { guardar(p, { estado: s.value }, function () { p.estado = s.value; pintar(); }); };
+      var n = el('input'); n.placeholder = 'Nota interna (ej: seña recibida, plazo informado)'; n.value = p.interna || '';
+      n.onchange = function () { guardar(p, { interna: n.value }, function () { p.interna = n.value; }); };
+      f.appendChild(s); f.appendChild(n); c.appendChild(f); box.appendChild(c);
+    });
+  }
+  function guardar(p, cambios, ok) {
+    var b = { accion: 'estado', id: p.id, prov: p.prov }; Object.keys(cambios).forEach(function (k) { b[k] = cambios[k]; });
+    api(b).then(function (j) { if (j.ok) { ok(); toast('Guardado'); } else toast('No se pudo guardar: ' + j.error); }).catch(function () { toast('Sin conexión'); });
+  }
+  $('fProv').onchange = lista; $('fQ').oninput = lista;
+
+  // ---- Hoja de compra: lo pendiente de una fábrica, sumado por producto ----
+  var sel = [];
+  function compra() {
+    var pv = $('cProv').value, es = $('cEst').value;
+    sel = data.pedidos.filter(function (p) { return p.prov === pv && p.estado === es; });
+    var agg = {}, order = [];
+    sel.forEach(function (p) {
+      p.lineas.forEach(function (x) {
+        var k = [x.modelo, x.nombre, x.madera, x.medida, x.lustre, x.tela].join('|');
+        if (!agg[k]) { agg[k] = { x: x, cant: 0 }; order.push(k); } agg[k].cant += x.cant;
+      });
+    });
+    var t = 'PEDIDO A FÁBRICA · ' + (pv || '') + '\n' + new Date().toLocaleDateString('es-AR') + '\n\n';
+    if (!order.length) t += '(No hay pedidos en estado "' + es + '" para este proveedor)';
+    order.sort().forEach(function (k, i) {
+      var x = agg[k].x; t += (i + 1) + '. ' + agg[k].cant + ' x ' + x.nombre + ' (' + x.modelo + ')' + (x.madera ? ' · ' + x.madera : '') + (x.medida ? ' · ' + x.medida : '') +
+        '\n   Lustre ' + x.lustre + (x.tela ? ' · Tela ' + x.tela : '') + '\n';
+    });
+    $('cTxt').textContent = t; $('cInfo').textContent = sel.length + ' pedido(s) de clientes incluidos';
+  }
+  $('cProv').onchange = compra; $('cEst').onchange = compra;
+  $('cCopy').onclick = function () { navigator.clipboard.writeText($('cTxt').textContent).then(function () { toast('Copiado'); }, function () { toast('No se pudo copiar'); }); };
+  $('cMark').onclick = function () {
+    if (!sel.length || !confirm('¿Marcar ' + sel.length + ' pedido(s) como "Pedido a fábrica"?')) return;
+    Promise.all(sel.map(function (p) { return api({ accion: 'estado', id: p.id, prov: p.prov, estado: 'Pedido a fábrica' }); })).then(function () { return cargar(); }).then(function () { toast('Marcados'); });
+  };
+
+  $('tPed').onclick = function () { $('vPed').hidden = false; $('vCompra').hidden = true; $('tPed').setAttribute('aria-pressed', 'true'); $('tCompra').setAttribute('aria-pressed', 'false'); };
+  $('tCompra').onclick = function () { $('vPed').hidden = true; $('vCompra').hidden = false; $('tPed').setAttribute('aria-pressed', 'false'); $('tCompra').setAttribute('aria-pressed', 'true'); compra(); };
+
+  if (key) cargar();
+})();
+</script>
+</body>
+</html>

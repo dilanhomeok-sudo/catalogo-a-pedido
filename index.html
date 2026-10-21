@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muebles de madera a pedido · Dilan Home</title>
-<meta name="description" content="Muebles de madera Dimadera fabricados a pedido: juegos de comedor, sillas, mesas y complementos en pino y paraíso. Armá tu pedido online.">
+<title>Pedidos a fábrica · Dilan Home</title>
+<meta name="description" content="Muebles y colchones fabricados a pedido. Elegí el modelo, la medida, el lustre y la tela, y armá tu pedido online.">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
+<meta name="theme-color" content="#FAF6EF">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="Dilan Home">
@@ -20,47 +21,66 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#FAF6EF">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <a class="brand" href="./" aria-label="Dilan Home, muebles Dimadera">
+    <a class="brand" href="#/" id="brandLink" aria-label="Dilan Home, pedidos a fábrica">
       <svg class="mark" viewBox="0 0 80 90" aria-hidden="true"><path d="M6 5 L6 85 L34 85 A40 40 0 0 0 34 5 Z" fill="#C5D1B8"/><circle cx="36" cy="45" r="13" fill="#E9A98B"/></svg>
       <span class="word">dilan home</span>
-      <span class="line-name">Muebles Dimadera</span>
+      <span class="line-name" id="lineName">Pedidos a fábrica</span>
     </a>
-    <button class="cart-btn" id="openCart" aria-label="Ver mi pedido">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
-      <span>Mi pedido</span><i id="cartCount">0</i>
-    </button>
+    <div class="top-r">
+      <a class="shop-link" id="shopLink" href="https://www.dilan.com.ar/">Ir a la tienda</a>
+      <button class="cart-btn" id="openCart" aria-label="Ver mi pedido">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span>Mi pedido</span><i id="cartCount">0</i>
+      </button>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Muebles de madera fabricados para vos</h1>
-  <p>Elegí la madera, el lustre y las medidas. Armá tu pedido y lo enviamos por WhatsApp para confirmarlo.</p>
+<!-- Inicio: elegir proveedor -->
+<section id="hub" hidden>
+  <div class="hero">
+    <h1>Pedí a fábrica lo que no tenemos en stock</h1>
+    <p>Elegí el producto, la medida y los detalles. Armás tu pedido y lo confirmamos con vos por WhatsApp.</p>
+  </div>
+  <div class="steps">
+    <div><b>1</b><span>Elegí el producto y sus opciones</span></div>
+    <div><b>2</b><span>Armá tu pedido y envialo</span></div>
+    <div><b>3</b><span>Confirmamos plazo y seña con vos</span></div>
+  </div>
+  <div class="prov-grid" id="provGrid"></div>
 </section>
 
-<main>
-  <div class="bar">
-    <div class="seg" id="woods" role="tablist" aria-label="Madera"></div>
-    <input id="q" type="search" placeholder="Buscar (ej: silla, Kuno, mesa redonda)" aria-label="Buscar">
+<!-- Catálogo de un proveedor -->
+<section id="cat" hidden>
+  <div class="hero">
+    <a class="back" id="backHub" href="#/" hidden>← Todos los proveedores</a>
+    <h1 id="catTitle"></h1>
+    <p id="catDesc"></p>
   </div>
-  <nav class="chips" id="cats" aria-label="Categorías"></nav>
-  <nav class="chips sub" id="subs" aria-label="Subcategorías"></nav>
-  <p class="count" id="count"></p>
-  <div class="grid" id="grid"></div>
-  <p class="empty" id="empty" hidden>No encontramos productos con ese filtro.</p>
-</main>
+  <main>
+    <div class="bar">
+      <div class="seg" id="woods" role="tablist" aria-label="Madera"></div>
+      <input id="q" type="search" placeholder="Buscar (ej: silla, Kuno, mesa redonda)" aria-label="Buscar">
+    </div>
+    <nav class="chips" id="cats" aria-label="Categorías"></nav>
+    <nav class="chips sub" id="subs" aria-label="Subcategorías"></nav>
+    <p class="count" id="count"></p>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No encontramos productos con ese filtro.</p>
+  </main>
+</section>
 
 <footer>
   <div class="brand foot-brand" role="img" aria-label="Dilan Home">
     <svg class="mark" viewBox="0 0 80 90" aria-hidden="true"><path d="M6 5 L6 85 L34 85 A40 40 0 0 0 34 5 Z" fill="#C5D1B8"/><circle cx="36" cy="45" r="13" fill="#E9A98B"/></svg>
     <span class="word">dilan home</span>
   </div>
-  <p>Todos los muebles se fabrican a pedido. Los precios incluyen IVA y flete a depósito en Eldorado; el envío al domicilio se coordina aparte. Plazo de entrega y disponibilidad de lustres se confirman al tomar el pedido. Imágenes ilustrativas.</p>
+  <p>Todos los productos se fabrican a pedido. Los precios incluyen IVA y flete a depósito en Eldorado; el envío al domicilio se coordina aparte. Plazo de entrega y disponibilidad de opciones se confirman al tomar el pedido. Imágenes ilustrativas.</p>
 </footer>
 
 <!-- Detalle de producto -->
@@ -87,25 +107,35 @@
   </div>
 </div>
 
-<!-- Carrito -->
+<!-- Pedido -->
 <div class="overlay side" id="cartWrap" hidden>
   <aside class="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
     <div class="cart-h"><h2 id="cartTitle">Mi pedido</h2><button class="x" id="cClose" aria-label="Cerrar">&times;</button></div>
     <div class="cart-list" id="cList"></div>
-    <div class="cart-f" id="cFoot">
+    <form class="cart-f" id="cFoot" novalidate>
       <div class="tot"><span>Total lista</span><b id="cLista"></b></div>
       <div class="tot ef"><span>Total efectivo / transferencia</span><b id="cEf"></b></div>
-      <label class="fld"><span>Tu nombre</span><input id="cName" autocomplete="name" placeholder="Nombre y apellido"></label>
-      <label class="fld"><span>Notas (colores de tela, localidad, etc.)</span><textarea id="cNote" rows="2"></textarea></label>
-      <button class="primary wa" id="cSend">Enviar pedido por WhatsApp</button>
-      <button class="ghost" id="cCopy">Copiar pedido</button>
-      <button class="link" id="cClear">Vaciar pedido</button>
+      <label class="fld"><span>Tu nombre *</span><input id="cName" autocomplete="name" placeholder="Nombre y apellido" required></label>
+      <label class="fld"><span>Tu WhatsApp o teléfono *</span><input id="cTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 3751 123456" required></label>
+      <label class="fld"><span>Localidad y notas (colores de tela, medidas especiales, etc.)</span><textarea id="cNote" rows="2"></textarea></label>
+      <input id="cWeb" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="err" id="cErr" role="alert" hidden></p>
+      <button class="primary wa" id="cSend" type="submit">Enviar pedido por WhatsApp</button>
+      <button class="ghost" id="cCopy" type="button">Copiar pedido</button>
+      <button class="link" id="cClear" type="button">Vaciar pedido</button>
+    </form>
+    <div class="cart-f thanks" id="cThanks" hidden>
+      <h3>¡Gracias! Recibimos tu pedido</h3>
+      <p>Número de pedido: <b id="tId"></b></p>
+      <p id="tMsg">Se abrió WhatsApp con el detalle. Enviá el mensaje para que lo confirmemos con vos.</p>
+      <button class="primary wa" id="tWa" type="button">Abrir WhatsApp de nuevo</button>
+      <button class="ghost" id="tNew" type="button">Hacer otro pedido</button>
     </div>
   </aside>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 
-<script src="data.js"></script>
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

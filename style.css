@@ -130,3 +130,32 @@ select,input,textarea{border:1px solid var(--line);background:var(--card);border
   .prices b{font-size:15px}
 }
 @media (max-width:380px){.grid{grid-template-columns:1fr}}
+
+/* ---- Plataforma multi-proveedor ---- */
+.top-r{display:flex;align-items:center;gap:16px}
+.shop-link{color:var(--muted);font-size:14px;text-decoration:none;border-bottom:1px solid var(--line)}
+.shop-link:hover{color:var(--ink)}
+.back{display:inline-block;margin-bottom:12px;color:var(--muted);font-size:14px;text-decoration:none}
+.back:hover{color:var(--ink)}
+.steps{max-width:1180px;margin:8px auto 0;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.steps div{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;font-size:14px}
+.steps b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--salvia);display:grid;place-items:center;font-weight:600}
+.prov-grid{max-width:1180px;margin:20px auto 0;padding:0 16px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.prov-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .15s}
+.prov-card:hover{transform:translateY(-2px)}
+.prov-card .ph{aspect-ratio:16/9}
+.prov-card .b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.prov-card h3{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px;line-height:1.1}
+.prov-card .meta{margin:0;color:var(--muted);font-size:14px}
+.prov-card .go{margin-top:6px;font-weight:500;color:var(--salvia-d)}
+.grp{margin:14px 0 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--arcilla-d);font-weight:600}
+.err{margin:0;color:#9c2b1f;font-size:14px;font-weight:500}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.thanks{text-align:left;gap:12px}
+.thanks h3{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px}
+.thanks p{margin:0}
+@media (max-width:720px){
+  .shop-link{display:none}
+  .steps{grid-template-columns:1fr}
+  .prov-grid{grid-template-columns:1fr}
+}

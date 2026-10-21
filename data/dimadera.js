@@ -1,50 +1,51 @@
-// Generado por dimadera-fuente/build_data.py. Solo precios de reventa.
-window.CATALOGO = {
+// Generado por pedidos-fabrica-fuente/build_data.py. Solo precios de reventa.
+window.CATALOGOS = window.CATALOGOS || {};
+CATALOGOS.dimadera = {
  "recargoLista": 1.2,
  "telas": [
   {
    "n": "Gris Plomo",
-   "img": "img/telas/gris-plomo.jpg"
+   "img": "img/dimadera/telas/gris-plomo.jpg"
   },
   {
    "n": "Rustico Siena",
-   "img": "img/telas/rustico-siena.jpg"
+   "img": "img/dimadera/telas/rustico-siena.jpg"
   },
   {
    "n": "Cuerotex Gris",
-   "img": "img/telas/cuerotex-gris.jpg"
+   "img": "img/dimadera/telas/cuerotex-gris.jpg"
   },
   {
    "n": "Cuerotex Beige",
-   "img": "img/telas/cuerotex-beige.jpg"
+   "img": "img/dimadera/telas/cuerotex-beige.jpg"
   },
   {
    "n": "Gris Granito",
-   "img": "img/telas/gris-granito.jpg"
+   "img": "img/dimadera/telas/gris-granito.jpg"
   },
   {
    "n": "Rustico Pardo",
-   "img": "img/telas/rustico-pardo.jpg"
+   "img": "img/dimadera/telas/rustico-pardo.jpg"
   },
   {
    "n": "Torino Marfil",
-   "img": "img/telas/torino-marfil.jpg"
+   "img": "img/dimadera/telas/torino-marfil.jpg"
   },
   {
    "n": "Torino Metal",
-   "img": "img/telas/torino-metal.jpg"
+   "img": "img/dimadera/telas/torino-metal.jpg"
   },
   {
    "n": "Gris Perla",
-   "img": "img/telas/gris-perla.jpg"
+   "img": "img/dimadera/telas/gris-perla.jpg"
   },
   {
    "n": "Azul Arándano",
-   "img": "img/telas/azul-arandano.jpg"
+   "img": "img/dimadera/telas/azul-arandano.jpg"
   },
   {
    "n": "Verde Musgo",
-   "img": "img/telas/verde-musgo.jpg"
+   "img": "img/dimadera/telas/verde-musgo.jpg"
   }
  ],
  "lustres": {
@@ -57,19 +58,19 @@ window.CATALOGO = {
    },
    {
     "n": "Miel",
-    "img": "img/lustres/mielpi.jpg",
+    "img": "img/dimadera/lustres/mielpi.jpg",
     "c": null,
     "s": 0
    },
    {
     "n": "Cedro",
-    "img": "img/lustres/cedropi.jpg",
+    "img": "img/dimadera/lustres/cedropi.jpg",
     "c": null,
     "s": 0
    },
    {
     "n": "Nogal",
-    "img": "img/lustres/nogalpi.jpg",
+    "img": "img/dimadera/lustres/nogalpi.jpg",
     "c": null,
     "s": 0
    },
@@ -98,25 +99,25 @@ window.CATALOGO = {
   "Paraíso": [
    {
     "n": "Natural",
-    "img": "img/lustres/naturalpa.jpg",
+    "img": "img/dimadera/lustres/naturalpa.jpg",
     "c": null,
     "s": 0
    },
    {
     "n": "Miel",
-    "img": "img/lustres/mielpa.jpg",
+    "img": "img/dimadera/lustres/mielpa.jpg",
     "c": null,
     "s": 0
    },
    {
     "n": "Cedro",
-    "img": "img/lustres/cedropa.jpg",
+    "img": "img/dimadera/lustres/cedropa.jpg",
     "c": null,
     "s": 0
    },
    {
     "n": "Nogal",
-    "img": "img/lustres/nogalpa.jpg",
+    "img": "img/dimadera/lustres/nogalpa.jpg",
     "c": null,
     "s": 0
    },
@@ -153,7 +154,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava con respaldo de madera.",
-   "img": "img/s-412-pa-l.jpg",
+   "img": "img/dimadera/s-412-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -170,7 +171,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava con respaldo tapizado.",
-   "img": "img/s-412tr-pa-l.jpg",
+   "img": "img/dimadera/s-412tr-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -187,7 +188,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava.",
-   "img": "img/pdf-s411e.jpg",
+   "img": "img/dimadera/pdf-s411e.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -204,7 +205,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava con respaldo tapizado.",
-   "img": "img/s-411tr-pa-l.jpg",
+   "img": "img/dimadera/s-411tr-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -221,7 +222,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava.",
-   "img": "img/pdf-s410e.jpg",
+   "img": "img/dimadera/pdf-s410e.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -238,7 +239,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava con respaldo tapizado.",
-   "img": "img/s-410tr-pa-l.jpg",
+   "img": "img/dimadera/s-410tr-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -255,7 +256,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla tapizada.",
-   "img": "img/s-101-pa-l.jpg",
+   "img": "img/dimadera/s-101-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -273,7 +274,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-105q-pa-l.jpg",
+   "img": "img/dimadera/s-105q-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -291,7 +292,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-106a-pa-l.jpg",
+   "img": "img/dimadera/s-106a-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -309,7 +310,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-109-pa-l.jpg",
+   "img": "img/dimadera/s-109-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -327,7 +328,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor escandinava.",
-   "img": "img/s-110e-t-pa-l.jpg",
+   "img": "img/dimadera/s-110e-t-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -345,7 +346,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor escandinava con respaldo tapizado.",
-   "img": "img/s-110tr-pa-l.jpg",
+   "img": "img/dimadera/s-110tr-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -362,7 +363,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-116-pa-l.jpg",
+   "img": "img/dimadera/s-116-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -380,7 +381,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-118-pa-l.jpg",
+   "img": "img/dimadera/s-118-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -398,7 +399,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": "img/sll-101-pa-l.jpg",
+   "img": "img/dimadera/sll-101-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -416,7 +417,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": "img/pdf-sll105q.jpg",
+   "img": "img/dimadera/pdf-sll105q.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -433,7 +434,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": "img/sll-106a-pa-l.jpg",
+   "img": "img/dimadera/sll-106a-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -451,7 +452,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": "img/sll-109-pa-l.jpg",
+   "img": "img/dimadera/sll-109-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -469,7 +470,7 @@ window.CATALOGO = {
    "sub": "Sillones",
    "tap": true,
    "desc": "Sillón de comedor con apoyabrazos.",
-   "img": "img/sll-116-pa-l.jpg",
+   "img": "img/dimadera/sll-116-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -487,7 +488,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta clásica, asiento a 71 cm.",
-   "img": "img/b-106a-pa-l.jpg",
+   "img": "img/dimadera/b-106a-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -504,7 +505,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta escandinava, asiento a 79 cm.",
-   "img": "img/b-110e-t-pa-l.jpg",
+   "img": "img/dimadera/b-110e-t-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -522,7 +523,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta escandinava con respaldo tapizado.",
-   "img": "img/b-110tr-pa-l.jpg",
+   "img": "img/dimadera/b-110tr-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -539,7 +540,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta clásica, asiento a 71 cm.",
-   "img": "img/b-116-pa-l.jpg",
+   "img": "img/dimadera/b-116-pa-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -557,7 +558,7 @@ window.CATALOGO = {
    "sub": "Mesas ratonas",
    "tap": false,
    "desc": "Mesa ratona, tapa enchapada, borde 19 mm.",
-   "img": "img/mr-119-pa-l-0606-4.jpg",
+   "img": "img/dimadera/mr-119-pa-l-0606-4.jpg",
    "variants": [
     {
      "l": "60 x 45 x 60 cm",
@@ -578,7 +579,7 @@ window.CATALOGO = {
    "sub": "Mesas arrime",
    "tap": false,
    "desc": "Mesa arrime.",
-   "img": "img/ma-138-pa-l-3510-4.jpg",
+   "img": "img/dimadera/ma-138-pa-l-3510-4.jpg",
    "variants": [
     {
      "l": "35 x 85 x 100 cm",
@@ -595,7 +596,7 @@ window.CATALOGO = {
    "sub": "Mesas desayunador",
    "tap": false,
    "desc": "Mesa desayunador, borde 38 mm.",
-   "img": "img/md-138-pa-l-0613-4.jpg",
+   "img": "img/dimadera/md-138-pa-l-0613-4.jpg",
    "variants": [
     {
      "l": "60 x 100 x 130 cm",
@@ -612,7 +613,7 @@ window.CATALOGO = {
    "sub": "Mesas bar",
    "tap": false,
    "desc": "Mesa bar, borde 19 mm.",
-   "img": "img/mb-119-pa-l-0808-3.jpg",
+   "img": "img/dimadera/mb-119-pa-l-0808-3.jpg",
    "variants": [
     {
      "l": "70 x 80 x 70 cm",
@@ -633,7 +634,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor style, borde 38 mm.",
-   "img": "img/mc-338-pa-l-1224-ps.jpg",
+   "img": "img/dimadera/mc-338-pa-l-1224-ps.jpg",
    "variants": [
     {
      "l": "90 x 78 x 160 cm",
@@ -658,7 +659,7 @@ window.CATALOGO = {
    "sub": "Mesas redondas",
    "tap": false,
    "desc": "Mesa comedor redonda cruz, borde 38 mm.",
-   "img": "img/mcr-638-pa-l-120-px.jpg",
+   "img": "img/dimadera/mcr-638-pa-l-120-px.jpg",
    "variants": [
     {
      "l": "Diámetro 90 cm (alto 78)",
@@ -679,7 +680,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor contemporánea, borde 38 mm.",
-   "img": "img/mc-238-pa-l-0914-c.jpg",
+   "img": "img/dimadera/mc-238-pa-l-0914-c.jpg",
    "variants": [
     {
      "l": "90 x 80 x 140 cm",
@@ -704,7 +705,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor clásica, borde 19 mm, pata 4\".",
-   "img": "img/mc-119-pa-l-0913-4.jpg",
+   "img": "img/dimadera/mc-119-pa-l-0913-4.jpg",
    "variants": [
     {
      "l": "90 x 80 x 130 cm",
@@ -745,7 +746,7 @@ window.CATALOGO = {
    "sub": "Mesas extensibles",
    "tap": false,
    "desc": "Mesa extensible, tapa enchapada, borde 19 mm.",
-   "img": "img/mce-119-pa-l-091318-4.jpg",
+   "img": "img/dimadera/mce-119-pa-l-091318-4.jpg",
    "variants": [
     {
      "l": "90 x 80 x 130 cm (extiende hasta 180)",
@@ -770,7 +771,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor escandinava, borde 19 mm.",
-   "img": "img/mc-219-pa-l-8513-1-5.jpg",
+   "img": "img/dimadera/mc-219-pa-l-8513-1-5.jpg",
    "variants": [
     {
      "l": "85 x 80 x 130 cm",
@@ -795,7 +796,7 @@ window.CATALOGO = {
    "sub": "Mesas redondas",
    "tap": false,
    "desc": "Mesa comedor redonda, borde 19 mm.",
-   "img": "img/mcr-119-pa-l-085.jpg",
+   "img": "img/dimadera/mcr-119-pa-l-085.jpg",
    "variants": [
     {
      "l": "Diámetro 85 cm (alto 80)",
@@ -816,7 +817,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa patas centrales, tapa enchapada, borde 57 mm.",
-   "img": "img/mc-460-pa-l-1020-pc.jpg",
+   "img": "img/dimadera/mc-460-pa-l-1020-pc.jpg",
    "variants": [
     {
      "l": "100 x 200 cm",
@@ -841,7 +842,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-412-4.jpg",
+   "img": "img/dimadera/jc-412-4.jpg",
    "variants": [
     {
      "l": "6 sillas S412 + mesa MC238 90 x 180",
@@ -862,7 +863,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-411e-4.jpg",
+   "img": "img/dimadera/jc-411e-4.jpg",
    "variants": [
     {
      "l": "6 sillas S411E + mesa MC219 85 x 160",
@@ -883,7 +884,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-410e-4.jpg",
+   "img": "img/dimadera/jc-410e-4.jpg",
    "variants": [
     {
      "l": "6 sillas S410E + mesa MC219 85 x 160",
@@ -904,7 +905,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-116-4.jpg",
+   "img": "img/dimadera/jc-116-4.jpg",
    "variants": [
     {
      "l": "6 sillas S116 + mesa MC119 90 x 160",
@@ -925,7 +926,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-106a-4.jpg",
+   "img": "img/dimadera/jc-106a-4.jpg",
    "variants": [
     {
      "l": "6 sillas S106A + mesa MC119 90 x 160",
@@ -946,7 +947,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": true,
    "desc": "Juego de comedor: mesa + sillas.",
-   "img": "img/jc-109-4.jpg",
+   "img": "img/dimadera/jc-109-4.jpg",
    "variants": [
     {
      "l": "6 sillas S109A + mesa MC119 90 x 160",
@@ -967,7 +968,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": false,
    "desc": "Silla comedor contemporánea, asiento de madera.",
-   "img": "img/s-510t-pi-l-d.jpg",
+   "img": "img/dimadera/s-510t-pi-l-d.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -984,7 +985,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-126-pi-l.jpg",
+   "img": "img/dimadera/s-126-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1002,7 +1003,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-206a-pi-l.jpg",
+   "img": "img/dimadera/s-206a-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1020,7 +1021,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": false,
    "desc": "Silla escandinava, asiento de madera.",
-   "img": "img/s-210m-pi-l.jpg",
+   "img": "img/dimadera/s-210m-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1037,7 +1038,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava.",
-   "img": "img/s-210t-pi-l.jpg",
+   "img": "img/dimadera/s-210t-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1054,7 +1055,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla escandinava con respaldo tapizado.",
-   "img": "img/s-210tr-pi-l.jpg",
+   "img": "img/dimadera/s-210tr-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1071,7 +1072,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-306a-pi-l.jpg",
+   "img": "img/dimadera/s-306a-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1088,7 +1089,7 @@ window.CATALOGO = {
    "sub": "Sillas",
    "tap": true,
    "desc": "Silla comedor clásica.",
-   "img": "img/s-316-pi-l.jpg",
+   "img": "img/dimadera/s-316-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1105,7 +1106,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta clásica, asiento a 71 cm.",
-   "img": "img/b-306a-pi-l.jpg",
+   "img": "img/dimadera/b-306a-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1122,7 +1123,7 @@ window.CATALOGO = {
    "sub": "Banquetas",
    "tap": true,
    "desc": "Banqueta clásica, asiento a 71 cm.",
-   "img": "img/b-316-pi-l.jpg",
+   "img": "img/dimadera/b-316-pi-l.jpg",
    "variants": [
     {
      "l": "Unidad",
@@ -1139,7 +1140,7 @@ window.CATALOGO = {
    "sub": "Mesas ratonas",
    "tap": false,
    "desc": "Mesa ratona, tapa enchapada, borde 19 mm.",
-   "img": "img/mr-119-pi-l-0606-3.jpg",
+   "img": "img/dimadera/mr-119-pi-l-0606-3.jpg",
    "variants": [
     {
      "l": "60 x 45 x 60 cm",
@@ -1168,7 +1169,7 @@ window.CATALOGO = {
    "sub": "Mesas desayunador",
    "tap": false,
    "desc": "Mesa desayunador, borde 38 mm.",
-   "img": "img/md-138-pi-l-0613-4.jpg",
+   "img": "img/dimadera/md-138-pi-l-0613-4.jpg",
    "variants": [
     {
      "l": "60 x 80 x 130 cm",
@@ -1185,7 +1186,7 @@ window.CATALOGO = {
    "sub": "Mesas bar",
    "tap": false,
    "desc": "Mesa bar, borde 19 mm.",
-   "img": "img/mb-119-pi-l-0707-3.jpg",
+   "img": "img/dimadera/mb-119-pi-l-0707-3.jpg",
    "variants": [
     {
      "l": "70 x 80 x 70 cm",
@@ -1206,7 +1207,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor style, borde 38 mm.",
-   "img": "img/mc-338-pa-l-1224-ps.jpg",
+   "img": "img/dimadera/mc-338-pa-l-1224-ps.jpg",
    "variants": [
     {
      "l": "90 x 78 x 160 cm",
@@ -1231,7 +1232,7 @@ window.CATALOGO = {
    "sub": "Mesas redondas",
    "tap": false,
    "desc": "Mesa comedor redonda cruz, borde 38 mm.",
-   "img": "img/mcr-638-pa-l-120-px.jpg",
+   "img": "img/dimadera/mcr-638-pa-l-120-px.jpg",
    "variants": [
     {
      "l": "Diámetro 90 cm (alto 78)",
@@ -1252,7 +1253,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor clásica, borde 19 mm, pata 3\".",
-   "img": "img/mc-119-pi-l-0913-3.jpg",
+   "img": "img/dimadera/mc-119-pi-l-0913-3.jpg",
    "variants": [
     {
      "l": "90 x 80 x 130 cm",
@@ -1285,7 +1286,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor escandinava, borde 19 mm.",
-   "img": "img/mc-219-pi-l-8513-1-5.jpg",
+   "img": "img/dimadera/mc-219-pi-l-8513-1-5.jpg",
    "variants": [
     {
      "l": "85 x 80 x 130 cm",
@@ -1310,7 +1311,7 @@ window.CATALOGO = {
    "sub": "Mesas redondas",
    "tap": false,
    "desc": "Mesa comedor redonda, borde 19 mm.",
-   "img": "img/mcr-pi-l-085.jpg",
+   "img": "img/dimadera/mcr-pi-l-085.jpg",
    "variants": [
     {
      "l": "Diámetro 80 cm (alto 85)",
@@ -1331,7 +1332,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa comedor clásica, tapa finger, borde 18 mm.",
-   "img": "img/pdf-mcm118.jpg",
+   "img": "img/dimadera/pdf-mcm118.jpg",
    "variants": [
     {
      "l": "70 x 80 x 120 cm",
@@ -1356,7 +1357,7 @@ window.CATALOGO = {
    "sub": "Mesas rectangulares",
    "tap": false,
    "desc": "Mesa tapa finger 18 mm.",
-   "img": "img/mcm-510-pi-l-090140-2.jpg",
+   "img": "img/dimadera/mcm-510-pi-l-090140-2.jpg",
    "variants": [
     {
      "l": "90 x 79,5 x 140 cm",
@@ -1377,7 +1378,7 @@ window.CATALOGO = {
    "sub": "Juegos comedor",
    "tap": false,
    "desc": "Juego Terra: mesa tapa finger 18 mm + sillas S510 de madera.",
-   "img": "img/jc510-4.jpg",
+   "img": "img/dimadera/jc510-4.jpg",
    "variants": [
     {
      "l": "4 sillas S510 + mesa 90 x 140",
@@ -1398,7 +1399,7 @@ window.CATALOGO = {
    "sub": "Combos",
    "tap": true,
    "desc": "Combo de 4, 6 u 8 sillas S126 + mesa MC119 tapa enchapada 19 mm, larguero 3\".",
-   "img": "img/cb-03.jpg",
+   "img": "img/dimadera/cb-03.jpg",
    "variants": [
     {
      "l": "4 sillas S126 + mesa 85 x 130 cm",
@@ -1423,7 +1424,7 @@ window.CATALOGO = {
    "sub": "Combos",
    "tap": true,
    "desc": "Combo de 4, 6 u 8 sillas S206A + mesa MC119 tapa enchapada 19 mm, larguero 3\".",
-   "img": "img/cb-07.jpg",
+   "img": "img/dimadera/cb-07.jpg",
    "variants": [
     {
      "l": "4 sillas S206A + mesa 85 x 130 cm",
@@ -1448,7 +1449,7 @@ window.CATALOGO = {
    "sub": "Combos",
    "tap": true,
    "desc": "Pino macizo: sillas S126 + mesa MCM118 tapa finger 18 mm, larguero 4\".",
-   "img": "img/cbm-03.jpg",
+   "img": "img/dimadera/cbm-03.jpg",
    "variants": [
     {
      "l": "4 sillas S126 + mesa 70 x 120 cm",
@@ -1473,7 +1474,7 @@ window.CATALOGO = {
    "sub": "Combos",
    "tap": true,
    "desc": "Pino macizo: sillas S127N + mesa MCM118 tapa finger 18 mm, larguero 3\".",
-   "img": "img/cbm-01.jpg",
+   "img": "img/dimadera/cbm-01.jpg",
    "variants": [
     {
      "l": "4 sillas S127N + mesa 70 x 120 cm",

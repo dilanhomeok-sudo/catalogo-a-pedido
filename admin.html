@@ -110,6 +110,13 @@
   $('salir').onclick = function () { key = ''; try { sessionStorage.removeItem('adm-key'); } catch (e) {} location.reload(); };
   $('tRef').onclick = function () { cargar().then(function () { toast('Actualizado'); }); };
 
+  // Línea legible: "2 x Nombre (modelo) · marca · atributos | medida · opciones · cód. X"
+  function lineaTxt(x, conCant, cant) {
+    var n = (conCant ? x.cant : cant) + ' x ' + x.nombre + (x.modelo ? ' (' + x.modelo + ')' : '') + (x.marca ? ' · ' + x.marca : '') + (x.atrib ? ' · ' + x.atrib : '');
+    var d = [x.medida, x.opc, x.cod ? 'cód. ' + x.cod : ''].filter(Boolean).join(' · ');
+    return d ? n + (conCant ? ' · ' : '\n   ') + d : n;
+  }
+
   // ---- Pedidos ----
   function pintar() {
     var provs = []; data.pedidos.forEach(function (p) { if (provs.indexOf(p.prov) < 0) provs.push(p.prov); });
@@ -141,7 +148,7 @@
       var tel = String(p.tel).replace(/\D/g, ''), wa = el('a', 'wa', 'WhatsApp ' + p.tel);
       wa.href = 'https://wa.me/' + (tel.length <= 10 ? '549' + tel.replace(/^0/, '') : tel); wa.target = '_blank'; wa.rel = 'noopener'; c.appendChild(wa);
       var ul = el('ul'); p.lineas.forEach(function (x) {
-        ul.appendChild(el('li', '', x.cant + ' x ' + x.nombre + ' (' + x.modelo + ')' + (x.madera ? ' · ' + x.madera : '') + (x.medida ? ' · ' + x.medida : '') + ' · Lustre ' + x.lustre + (x.tela ? ' · Tela ' + x.tela : '')));
+        ul.appendChild(el('li', '', lineaTxt(x, true)));
       }); c.appendChild(ul);
       if (p.notas) c.appendChild(el('div', 'muted', 'Notas del cliente: ' + p.notas));
       var f = el('div', 'ped-f'), s = el('select'); s.setAttribute('aria-label', 'Estado');
@@ -166,16 +173,13 @@
     var agg = {}, order = [];
     sel.forEach(function (p) {
       p.lineas.forEach(function (x) {
-        var k = [x.modelo, x.nombre, x.madera, x.medida, x.lustre, x.tela].join('|');
+        var k = [x.marca, x.nombre, x.modelo, x.atrib, x.medida, x.opc, x.cod].join('|');
         if (!agg[k]) { agg[k] = { x: x, cant: 0 }; order.push(k); } agg[k].cant += x.cant;
       });
     });
     var t = 'PEDIDO A FÁBRICA · ' + (pv || '') + '\n' + new Date().toLocaleDateString('es-AR') + '\n\n';
     if (!order.length) t += '(No hay pedidos en estado "' + es + '" para este proveedor)';
-    order.sort().forEach(function (k, i) {
-      var x = agg[k].x; t += (i + 1) + '. ' + agg[k].cant + ' x ' + x.nombre + ' (' + x.modelo + ')' + (x.madera ? ' · ' + x.madera : '') + (x.medida ? ' · ' + x.medida : '') +
-        '\n   Lustre ' + x.lustre + (x.tela ? ' · Tela ' + x.tela : '') + '\n';
-    });
+    order.sort().forEach(function (k, i) { t += (i + 1) + '. ' + lineaTxt(agg[k].x, false, agg[k].cant) + '\n'; });
     $('cTxt').textContent = t; $('cInfo').textContent = sel.length + ' pedido(s) de clientes incluidos';
   }
   $('cProv').onchange = compra; $('cEst').onchange = compra;

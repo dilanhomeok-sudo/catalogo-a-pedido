@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedidos a fábrica · Dilan Home</title>
-<meta name="description" content="Muebles y colchones fabricados a pedido. Elegí el modelo, la medida, el lustre y la tela, y armá tu pedido online.">
+<meta name="description" content="Muebles y colchones que se piden a fábrica o al importador. Elegí por foto y precio, con la medida y los detalles que quieras, y armá tu pedido online.">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <meta name="theme-color" content="#FAF6EF">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="Dilan Home">
-<meta property="og:title" content="Muebles de madera a pedido · Dilan Home">
-<meta property="og:description" content="Juegos de comedor, sillas, mesas y complementos en pino y paraíso. Elegí lustre y tela, y armá tu pedido.">
+<meta property="og:title" content="Muebles y colchones a pedido · Dilan Home">
+<meta property="og:description" content="Juegos de comedor, sillas, sillones, roperos, colchones y más. Elegí por foto y precio, y armá tu pedido.">
 <meta property="og:url" content="https://dilanhomeok-sudo.github.io/dimadera-catalogo/">
 <meta property="og:image" content="https://dilanhomeok-sudo.github.io/dimadera-catalogo/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,37 +41,49 @@
   </div>
 </header>
 
-<!-- Inicio: elegir proveedor -->
+<!-- Inicio: elegir rubro -->
 <section id="hub" hidden>
   <div class="hero">
-    <h1>Pedí a fábrica lo que no tenemos en stock</h1>
-    <p>Elegí el producto, la medida y los detalles. Armás tu pedido y lo confirmamos con vos por WhatsApp.</p>
+    <h1>Pedí lo que no tenemos en stock</h1>
+    <p>Elegí por foto y precio, con la medida y los detalles que quieras. Armás tu pedido y lo confirmamos con vos por WhatsApp.</p>
+    <form class="hero-search" id="heroSearch" role="search">
+      <input id="hq" type="search" placeholder="¿Qué buscás? (ej: mesa, sillón, colchón 1,40)" aria-label="Buscar productos">
+      <button class="primary" type="submit">Buscar</button>
+    </form>
   </div>
   <div class="steps">
     <div><b>1</b><span>Elegí el producto y sus opciones</span></div>
     <div><b>2</b><span>Armá tu pedido y envialo</span></div>
     <div><b>3</b><span>Confirmamos plazo y seña con vos</span></div>
   </div>
-  <div class="prov-grid" id="provGrid"></div>
+  <h2 class="sec">Explorá por rubro</h2>
+  <div class="rubro-grid" id="rubroGrid"></div>
+  <h2 class="sec">Marcas y proveedores</h2>
+  <div class="marcas" id="marcas"></div>
 </section>
 
-<!-- Catálogo de un proveedor -->
+<!-- Listado de productos -->
 <section id="cat" hidden>
-  <div class="hero">
-    <a class="back" id="backHub" href="#/" hidden>← Todos los proveedores</a>
+  <div class="hero slim">
+    <a class="back" href="#/">← Todos los rubros</a>
     <h1 id="catTitle"></h1>
-    <p id="catDesc"></p>
   </div>
   <main>
     <div class="bar">
-      <div class="seg" id="woods" role="tablist" aria-label="Madera"></div>
       <input id="q" type="search" placeholder="Buscar (ej: silla, Kuno, mesa redonda)" aria-label="Buscar">
+      <button class="ghost filt-btn" id="filtBtn" type="button" aria-expanded="false" aria-controls="filtros">Filtros <i id="filtN" hidden></i></button>
+      <label class="ord"><span class="sr">Ordenar</span>
+        <select id="ord" aria-label="Ordenar">
+          <option value="rel">Orden sugerido</option><option value="min">Menor precio</option><option value="max">Mayor precio</option><option value="az">A → Z</option>
+        </select>
+      </label>
     </div>
-    <nav class="chips" id="cats" aria-label="Categorías"></nav>
-    <nav class="chips sub" id="subs" aria-label="Subcategorías"></nav>
+    <div class="filtros" id="filtros"></div>
+    <nav class="chips sub" id="subs" aria-label="Tipo de producto"></nav>
     <p class="count" id="count"></p>
     <div class="grid" id="grid"></div>
-    <p class="empty" id="empty" hidden>No encontramos productos con ese filtro.</p>
+    <div class="more"><button class="ghost" id="more" type="button" hidden>Ver más productos</button></div>
+    <p class="empty" id="empty" hidden>No encontramos productos con ese filtro. <button class="link" id="clearF" type="button">Quitar filtros</button></p>
   </main>
 </section>
 
@@ -80,7 +92,7 @@
     <svg class="mark" viewBox="0 0 80 90" aria-hidden="true"><path d="M6 5 L6 85 L34 85 A40 40 0 0 0 34 5 Z" fill="#C5D1B8"/><circle cx="36" cy="45" r="13" fill="#E9A98B"/></svg>
     <span class="word">dilan home</span>
   </div>
-  <p>Todos los productos se fabrican a pedido. Los precios incluyen IVA y flete a depósito en Eldorado; el envío al domicilio se coordina aparte. Plazo de entrega y disponibilidad de opciones se confirman al tomar el pedido. Imágenes ilustrativas.</p>
+  <p>Todos los productos se piden a fábrica o al importador (no hay stock). Los precios incluyen IVA y flete a depósito en Eldorado; el envío al domicilio se coordina aparte. El plazo de cada producto figura en su ficha y se confirma al tomar el pedido; la disponibilidad de opciones también. Imágenes ilustrativas.</p>
 </footer>
 
 <!-- Detalle de producto -->
@@ -93,8 +105,8 @@
       <h2 id="mName"></h2>
       <p class="m-desc" id="mDesc"></p>
       <label class="fld" id="fVar"><span>Medida / versión</span><select id="mVar"></select></label>
-      <div class="fld"><span>Lustre: <b id="mLusSel"></b></span><div class="swatches" id="mLus"></div><small id="mLusNote"></small></div>
-      <div class="fld" id="fTap"><span>Tela: <b id="mTelaSel"></b></span><div class="swatches" id="mTela"></div></div>
+      <div id="mGrupos"></div>
+      <p class="plazo" id="mPlazo"></p>
       <label class="fld"><span>Cantidad</span>
         <div class="qty"><button type="button" id="mMinus">&minus;</button><b id="mQty">1</b><button type="button" id="mPlus">+</button></div>
       </label>
@@ -102,6 +114,7 @@
         <div><small>Precio de lista</small><b id="mLista"></b></div>
         <div class="ef"><small>Efectivo / transferencia</small><b id="mEf"></b></div>
       </div>
+      <p class="cu" id="mCu" hidden></p>
       <button class="primary" id="mAdd">Agregar al pedido</button>
     </div>
   </div>
